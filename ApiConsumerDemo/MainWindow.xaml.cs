@@ -1,5 +1,6 @@
 ﻿using DemoLibrary;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -24,6 +25,7 @@ namespace ApiConsumerDemo
         {
             InitializeComponent();
             ApiHelper.InitializeClient();
+            nextImageButton.IsEnabled = false;
 
         }
         private async Task LoadImage(int imageNumber =0)
@@ -41,6 +43,34 @@ namespace ApiConsumerDemo
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             await LoadImage();
+        }
+
+        private async void previousImageButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentNumber>1)
+            {
+                currentNumber--;
+                nextImageButton.IsEnabled = true;
+                await LoadImage(currentNumber);
+                if (currentNumber ==1)
+                {
+                    previousImageButton.IsEnabled = false;
+                }
+            }
+        }
+
+        private async void nextImageButton_Click(object sender, RoutedEventArgs e)
+        {
+            if ( currentNumber<maxNumber)
+            {
+                currentNumber++;
+                previousImageButton.IsEnabled = true;
+                await LoadImage(currentNumber);
+                if (currentNumber==maxNumber)
+                {
+                    nextImageButton.IsEnabled=false;
+                }
+            }
         }
     }
 }
