@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApiConsumerDemo"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        mc:Ignorable="d" Loaded="Window_Loaded"
+        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -17,6 +17,6 @@
             <Button x:Name="nextImageButton" Padding="15" Margin="15">Next</Button>
         </StackPanel>
 
-        <Image Grid.Row="1" x:Name="comicImage" />
+        <Image Grid.Row="1" x:Name="comicImage" Margin="20" />
     </Grid>
 </Window>
