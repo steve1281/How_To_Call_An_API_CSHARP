@@ -72,5 +72,11 @@ namespace ApiConsumerDemo
                 }
             }
         }
+
+        private void sunInformationButton_Click(object sender, RoutedEventArgs e)
+        {
+            (new SunInfo()).Show();
+
+        }
     }
 }

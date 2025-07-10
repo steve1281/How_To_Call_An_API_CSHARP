@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DemoLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,14 +15,20 @@ using System.Windows.Shapes;
 
 namespace ApiConsumerDemo
 {
-    /// <summary>
-    /// Interaction logic for SunInfo.xaml
-    /// </summary>
     public partial class SunInfo : Window
     {
         public SunInfo()
         {
             InitializeComponent();
+        }
+
+        private async void loadSunInfo_Click(object sender, RoutedEventArgs e)
+        {
+            
+            var sunInfo = await (new SunProcessor()).LoadSunInformation();
+            sunriseText.Text = $"Sunrise is at {sunInfo.SunRise.ToLocalTime().ToShortTimeString()}";
+            sunsetText.Text = $"Sunset is at {sunInfo.SunSet.ToLocalTime().ToShortTimeString()}";
+
         }
     }
 }
